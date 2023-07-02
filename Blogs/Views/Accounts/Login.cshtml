@@ -1,0 +1,34 @@
+﻿@model LoginViewModel
+<div class="col-md-4 mx-auto">
+    <form method="post" asp-route-returnUrl="@Model.ReturnUrl" asp-controller="Accounts" asp-action="Login">
+        <h3 class="h3 text-center">Войдите в систему</h3>
+        <div>
+            <span id="3" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div class="form-floating">
+            <input class="form-control" asp-for="Email">
+            <label for="floatingInput">Псевдоним</label>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div class="form-floating">
+            <input asp-for="Password" class="form-control">
+            <label for="floatingPassword">Пароль</label>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div class="checkbox mb-3 ">
+            <label>
+                <input type="checkbox" id="scales" name="scales" checked> Запомнить меня
+            </label>
+        </div>
+        <button class="btn btn-outline-secondary" type="submit">Войти</button>
+    </form>
+</div>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,41 @@
+﻿@model DetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="main-content col-md-10 mx-auto">
+    <div class="col-lg-8 mx-auto">
+        <div class="container">
+            <div class="d-block bd-highlight mb-2">
+                <div class="d-flex bd-highlight mb-1">
+                    <div class="d-block mb-1 me-5 bd-highlight text-primary">@Html.DisplayFor(modelItem => Model.Category)</div>
+                    <div class="mb-1 me-5 bd-highlight d-none text-muted d-sm-block">@Html.DisplayFor(modelItem => Model.ReleaseDate)</div>
+                    <a asp-controller="User" asp-action="Index" asp-route-id="@Model.User.Id" class="d-block mb-2 flex-grow-1 mb-1 bd-highlight">@Html.DisplayFor(modelItem => Model.User.UserName)</a>
+                    <div class="dropdown">
+                        <a class="" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="color: black">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            @if (Model.userManager.GetUserId(User) == Model.UserId)
+                            {
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Blogs" asp-action="Edit" asp-route-Id="@Model.Id">Редактировать</a>
+                                </li>
+                                <li>
+                                    <form asp-action="Delete" class="form-inline" asp-controller="Blogs" asp-route-Id="@Model.Id">
+                                        <input type="hidden" name="my-field" value="my-value">
+                                        <button class="dropdown-item" type="submit">Удалить</button>
+                                    </form>
+                                </li>
+                            }
+                            <li><a class="dropdown-item" href="#" id="copy-button">Поделиться</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-sm-none bd-highlight text-muted">@Html.DisplayFor(modelItem => Model.ReleaseDate)</div>
+            </div>
+            <h3 class="mb-1 content-title">@Html.DisplayFor(modelItem => Model.Title)</h3>
+            <p class="my-3">@Html.DisplayFor(modelItem => Model.Text)</p>
+        </div>
+    </div>
+</div>

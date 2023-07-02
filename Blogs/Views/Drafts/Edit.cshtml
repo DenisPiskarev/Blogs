@@ -1,0 +1,33 @@
+﻿@model EditDraftViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="col-md-6 mx-auto">
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="d-block justify-content-between align-items-center">
+            <div class="">
+                <h4 class="blog-post-title">Категория:</h4>
+                <input asp-for="Category" class="form-control" value="@Model.Category" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="">
+                <h4 class="blog-post-title">Название:</h4>
+                <input asp-for="Title" class="form-control" value="@Model.Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div>
+            <label></label>
+            <textarea asp-for="Text" id="txtarea" class="form-control" placeholder="Введите текст поста">@Model.Text</textarea>
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div align="center">
+            <input type="submit" value="Опубликовать" formaction="/Blogs/Add" class="btn btn-lg btn-outline-secondary" />
+            <input type="submit" value="В черновик" formaction="/Drafts/Edit" class="btn btn-lg btn-outline-secondary" />
+        </div>
+    </form>
+</div>

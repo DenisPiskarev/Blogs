@@ -1,0 +1,44 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="col-md-4 mx-auto">
+    <form method="post" asp-controller="Accounts" asp-action="Register">
+        <h3 class="h3 text-center">Регистрация</h3>
+        <div>
+            <span id="3" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div class="form-floating">
+            <input class="form-control" asp-for="Email">
+            <label for="floatingInput">Почта</label>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div class="form-floating">
+            <input class="form-control" asp-for="UserName">
+            <label for="floatingInput">Псевдоним</label>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div class="form-floating">
+            <input asp-for="Password" class="form-control">
+            <label for="floatingPassword">Пароль</label>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <p></p>
+        <div class="form-floating">
+            <input asp-for="PasswordConfirm" class="form-control">
+            <label for="floatingPassword">Подтвердить пароль</label>
+            <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+        </div>
+        <p></p>
+        <button class="btn btn-outline-secondary" type="submit">Зарегистрироваться</button>
+    </form>
+</div>
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
